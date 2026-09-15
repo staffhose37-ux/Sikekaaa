@@ -10,19 +10,29 @@
 <style>
 
 /* =========================================================
-   GA-VR CYBER / NEON VERSION
-   LEFT ALIGN VERSION
+   GA-VR // PINK MAROON MATRIX
+   BACKGROUND ORIGINAL / NO COLOR OVERLAY
    ========================================================= */
 
 :root{
+    --pink:#ff2b83;
+    --pink-light:#ff78b4;
+    --maroon:#420017;
+    --maroon-dark:#180008;
+    --red:#ff174f;
+
     --neon-gold:#ffe66d;
     --cyber-amber:#ff7a18;
+
     --dark-core:#050509;
     --panel-bg:#0c0d15;
-    --border-glow:rgba(255,70,120,.30);
+
+    --border-glow:rgba(255,43,131,.45);
+
     --text-neon:#f7f8ff;
+    --text-normal:#f4f4f4;
+
     --success-cyan:#32f6ff;
-    --cyber-red:#ff176b;
     --violet:#8b5cff;
 
     --font-header:'Orbitron',sans-serif;
@@ -37,118 +47,89 @@
 *{
     box-sizing:border-box;
     outline:none;
-    cursor:url("cursor.png"), auto;
+    cursor:url("cursor.png"),auto;
 }
 
-html, body{
-    cursor:url("cursor.png"), auto;
+html,
+body{
+    cursor:url("cursor.png"),auto;
 }
 
-a, button, input, textarea, select, option, [role="button"]{
-    cursor:url("cursor.png"), pointer !important;
+a,
+button,
+input,
+textarea,
+select,
+option,
+[role="button"]{
+    cursor:url("cursor.png"),pointer !important;
 }
 
 html{
     scroll-behavior:smooth;
 }
 
+
+/* =========================================================
+   BODY
+   BACKGROUND ASLI TANPA OVERLAY WARNA
+   ========================================================= */
+
 body{
     margin:0;
+
     padding:0 25px 40px;
+
     min-height:100vh;
+
     overflow-x:hidden;
 
     font-family:var(--font-body);
+
     color:var(--text-neon);
+
     letter-spacing:.6px;
 
-    background:
-        linear-gradient(
-            135deg,
-            rgba(3,5,12,.22),
-            rgba(7,10,22,.16)
-        ),
-        url("dor.png") center center / cover no-repeat fixed;
+    /*
+       BACKGROUND ORIGINAL
+       Tidak menggunakan gradient.
+       Tidak menggunakan tint.
+       Tidak menggunakan warna tambahan.
+    */
+    background-image:url("jur.png");
 
-    background-color:#07101f;
+    background-position:center center;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+    background-color:transparent;
 }
 
 
 /* =========================================================
-   BACKGROUND GLOW
+   IMPORTANT
+   Background tidak diberi pseudo overlay
    ========================================================= */
 
+body::before,
 body::after{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    pointer-events:none;
+    display:none !important;
 
-    background:
-        radial-gradient(
-            circle at 20% 35%,
-            rgba(50,246,255,.08),
-            transparent 32%
-        ),
-        radial-gradient(
-            circle at 80% 65%,
-            rgba(255,23,107,.07),
-            transparent 34%
-        );
-
-    mix-blend-mode:screen;
+    content:none !important;
 }
 
 
 /* =========================================================
-   GRID BACKGROUND
-   ========================================================= */
-
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    pointer-events:none;
-
-    background-image:
-        linear-gradient(
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.018) 1px,
-            transparent 1px
-        );
-
-    background-size:42px 42px;
-
-    opacity:.40;
-
-    animation:gridMove 20s linear infinite;
-}
-
-@keyframes gridMove{
-
-    from{
-        background-position:0 0,0 0;
-    }
-
-    to{
-        background-position:42px 42px,-42px -42px;
-    }
-
-}
-
-
-/* =========================================================
-   ❄️ SNOW FALL EFFECT
+   SNOW FALL
    ========================================================= */
 
 .snow-container{
     position:fixed;
+
     inset:0;
 
     width:100%;
@@ -218,37 +199,44 @@ body::before{
 
 .cyber-marquee-container{
     width:100%;
+
     overflow:hidden;
 
     margin-bottom:26px;
+
     padding:12px 0;
 
     background:rgba(6,6,11,.82);
 
-    border-bottom:1px solid rgba(255,23,107,.45);
+    border-bottom:1px solid rgba(255,43,131,.55);
 
     position:relative;
+
     z-index:20;
 
     font-family:var(--font-header);
 
     box-shadow:
-        0 5px 20px rgba(255,0,85,.10);
+        0 5px 20px rgba(255,0,85,.12);
 }
 
 .cyber-marquee-container::after{
     content:"";
+
     position:absolute;
+
     left:-25%;
+
     bottom:0;
 
     width:25%;
+
     height:2px;
 
-    background:var(--success-cyan);
+    background:var(--pink);
 
     box-shadow:
-        0 0 10px var(--success-cyan);
+        0 0 10px var(--pink);
 
     animation:scanLine 5s linear infinite;
 }
@@ -267,15 +255,19 @@ body::before{
 
 .cyber-marquee-text{
     display:inline-block;
+
     white-space:nowrap;
+
     padding-left:100%;
 
     color:var(--neon-gold);
 
     font-size:.9rem;
+
     font-weight:700;
 
     text-transform:uppercase;
+
     letter-spacing:2px;
 
     text-shadow:
@@ -285,7 +277,7 @@ body::before{
 }
 
 .cyber-marquee-text span{
-    color:var(--success-cyan);
+    color:var(--pink-light);
 }
 
 @keyframes marqueeFlow{
@@ -307,50 +299,67 @@ body::before{
 
 .brand-header{
     display:flex;
+
     align-items:center;
+
     justify-content:space-between;
 
     max-width:1450px;
 
-    margin:0 0 28px;
+    /*
+       RATA KIRI
+    */
+    margin:0 0 28px 0;
 
     padding:15px 18px 20px;
 
-    border:1px solid rgba(255,255,255,.06);
+    border:1px solid rgba(255,43,131,.25);
+
     border-radius:16px;
 
-    background:rgba(5,5,10,.72);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18,4,12,.92),
+            rgba(5,5,10,.90)
+        );
 
     position:relative;
+
     overflow:hidden;
 
     box-shadow:
-        0 12px 35px rgba(0,0,0,.40),
+        0 12px 35px rgba(0,0,0,.45),
+        0 0 25px rgba(255,0,100,.08),
         inset 0 1px rgba(255,255,255,.05);
 
     gap:15px;
+
     flex-wrap:wrap;
 }
 
 .brand-header::after{
     content:"";
+
     position:absolute;
 
     left:-120px;
+
     bottom:0;
 
     width:120px;
+
     height:2px;
 
     background:linear-gradient(
         90deg,
         transparent,
-        var(--success-cyan),
+        var(--pink),
         transparent
     );
 
     box-shadow:
-        0 0 10px var(--success-cyan);
+        0 0 10px var(--pink);
 
     animation:headerLight 5s linear infinite;
 }
@@ -359,6 +368,7 @@ body::before{
 
     0%{
         transform:translateX(0);
+
         opacity:0;
     }
 
@@ -372,6 +382,7 @@ body::before{
 
     100%{
         transform:translateX(calc(100vw + 300px));
+
         opacity:0;
     }
 
@@ -384,13 +395,17 @@ body::before{
 
 .brand-logo-zone{
     display:flex;
+
     align-items:center;
+
     gap:15px;
 }
 
 .brand-logo{
     height:58px;
+
     width:auto;
+
     object-fit:contain;
 
     filter:
@@ -399,24 +414,28 @@ body::before{
 
 .brand-title{
     font-family:var(--font-header);
+
     font-weight:900;
 
     font-size:clamp(1.45rem,2.5vw,2.15rem);
 
     text-transform:uppercase;
+
     letter-spacing:2px;
 
     background:linear-gradient(
         90deg,
-        var(--neon-gold),
+        var(--pink-light),
         #fff,
-        var(--cyber-red)
+        var(--pink)
     );
 
     background-size:200% auto;
 
     -webkit-background-clip:text;
+
     background-clip:text;
+
     -webkit-text-fill-color:transparent;
 
     animation:titleShine 7s linear infinite;
@@ -441,55 +460,69 @@ body::before{
 
 .center-menu-hub{
     display:flex;
+
     gap:6px;
 
     padding:6px;
 
     border-radius:11px;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,43,131,.18);
 
-    background:rgba(0,0,0,.55);
+    background:rgba(0,0,0,.58);
 
     flex-wrap:wrap;
+
+    box-shadow:
+        inset 0 0 15px rgba(255,0,90,.05);
 }
 
 .btn-header-menu{
     position:relative;
+
     overflow:hidden;
 
     padding:11px 20px;
 
     border:1px solid transparent;
+
     border-radius:8px;
 
     background:transparent;
 
-    color:var(--neon-gold);
+    color:#ffb3d2;
 
     font-family:var(--font-header);
+
     font-size:.8rem;
+
     font-weight:700;
 
     cursor:pointer;
 
     letter-spacing:1px;
+
     text-transform:uppercase;
 
     transition:
         background .2s ease,
         color .2s ease,
-        border-color .2s ease;
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
 }
 
 .btn-header-menu::before{
     content:"";
 
     position:absolute;
+
     top:0;
+
     left:-100%;
 
     width:60%;
+
     height:100%;
 
     background:linear-gradient(
@@ -519,22 +552,30 @@ body::before{
 .btn-header-menu:hover{
     color:#fff;
 
-    background:rgba(255,23,107,.10);
+    background:rgba(255,43,131,.12);
 
-    border-color:rgba(255,23,107,.35);
+    border-color:rgba(255,43,131,.45);
+
+    box-shadow:
+        0 0 12px rgba(255,43,131,.15);
+
+    transform:translateY(-1px);
 }
 
 .btn-header-menu.active{
     background:linear-gradient(
         135deg,
-        #ff0b62,
-        #ff6a00
+        #ff176b,
+        #ff4f91
     );
 
     color:#fff;
 
+    border-color:#ff72aa;
+
     box-shadow:
-        0 0 10px rgba(255,23,107,.35);
+        0 0 10px rgba(255,23,107,.40),
+        0 0 25px rgba(255,23,107,.12);
 }
 
 
@@ -544,15 +585,18 @@ body::before{
 
 .right-hub{
     display:flex;
+
     align-items:center;
+
     gap:12px;
 }
 
 .live-clock{
     font-family:var(--font-header);
+
     font-size:.82rem;
 
-    color:var(--neon-gold);
+    color:#ffd5e5;
 
     background:#08080d;
 
@@ -563,21 +607,25 @@ body::before{
     border-radius:8px;
 
     white-space:nowrap;
+
+    box-shadow:
+        inset 0 0 12px rgba(255,0,90,.05);
 }
 
 .system-status{
     font-family:var(--font-header);
+
     font-size:.72rem;
 
-    color:var(--success-cyan);
+    color:#ff75ad;
 
-    border:1px solid var(--success-cyan);
+    border:1px solid var(--pink);
 
     padding:8px 13px;
 
     border-radius:8px;
 
-    background:rgba(0,243,255,.05);
+    background:rgba(255,43,131,.05);
 
     letter-spacing:1px;
 
@@ -592,26 +640,27 @@ body::before{
     display:inline-block;
 
     width:6px;
+
     height:6px;
 
     margin-right:6px;
 
     border-radius:50%;
 
-    background:var(--success-cyan);
+    background:var(--pink);
 
     box-shadow:
-        0 0 8px var(--success-cyan);
+        0 0 8px var(--pink);
 }
 
 @keyframes statusPulse{
 
     0%,100%{
-        box-shadow:0 0 3px rgba(0,243,255,.2);
+        box-shadow:0 0 3px rgba(255,43,131,.15);
     }
 
     50%{
-        box-shadow:0 0 10px rgba(0,243,255,.45);
+        box-shadow:0 0 12px rgba(255,43,131,.45);
     }
 
 }
@@ -630,6 +679,9 @@ body::before{
 
     max-width:1450px;
 
+    /*
+       RATA KIRI
+    */
     margin:0;
 }
 
@@ -664,28 +716,31 @@ body::before{
 
 .cyber-panel{
     position:relative;
+
     overflow:hidden;
 
     padding:25px;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,43,131,.22);
 
     border-radius:16px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(19,20,32,.95),
-            rgba(6,7,13,.92)
+            rgba(25,5,15,.96),
+            rgba(7,5,11,.95)
         );
 
     box-shadow:
         0 15px 35px rgba(0,0,0,.45),
+        0 0 25px rgba(255,0,90,.06),
         inset 0 1px rgba(255,255,255,.04);
 
     transition:
         border-color .2s ease,
-        transform .2s ease;
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
 .cyber-panel::before{
@@ -694,7 +749,9 @@ body::before{
     position:absolute;
 
     top:0;
+
     left:15%;
+
     right:15%;
 
     height:1px;
@@ -702,8 +759,8 @@ body::before{
     background:linear-gradient(
         90deg,
         transparent,
-        var(--cyber-red),
-        var(--success-cyan),
+        var(--pink),
+        #ff78b4,
         transparent
     );
 
@@ -725,9 +782,13 @@ body::before{
 }
 
 .cyber-panel:hover{
-    border-color:rgba(255,70,150,.25);
+    border-color:rgba(255,43,131,.50);
 
     transform:translateY(-1px);
+
+    box-shadow:
+        0 18px 38px rgba(0,0,0,.48),
+        0 0 20px rgba(255,43,131,.10);
 }
 
 
@@ -742,14 +803,16 @@ body::before{
 
     padding-bottom:11px;
 
-    color:var(--neon-gold);
+    color:#ffb4d1;
 
     font-family:var(--font-header);
 
     font-size:1.1rem;
+
     font-weight:700;
 
     text-transform:uppercase;
+
     letter-spacing:1px;
 }
 
@@ -759,15 +822,17 @@ body::before{
     position:absolute;
 
     left:0;
+
     bottom:0;
 
     width:75px;
+
     height:2px;
 
-    background:var(--cyber-red);
+    background:var(--pink);
 
     box-shadow:
-        0 0 7px rgba(255,23,107,.5);
+        0 0 7px rgba(255,23,107,.6);
 }
 
 
@@ -780,11 +845,12 @@ label{
 
     margin-bottom:8px;
 
-    color:var(--neon-gold);
+    color:#ffc2da;
 
     font-family:var(--font-header);
 
     font-size:.82rem;
+
     font-weight:700;
 
     letter-spacing:1px;
@@ -793,25 +859,31 @@ label{
 
 /* =========================================================
    TEXTAREA
+   INPUT NORMAL / JELAS
    ========================================================= */
 
 textarea{
     width:100%;
+
     height:380px;
 
     padding:16px;
 
     resize:none;
 
-    color:#fff;
+    color:#f5f5f5;
+
+    caret-color:#ff5c9f;
 
     font-family:monospace;
+
     font-size:.9rem;
+
     line-height:1.5;
 
     background:#08090f;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
 
     border-radius:10px;
 
@@ -821,6 +893,18 @@ textarea{
     transition:
         border-color .2s ease,
         box-shadow .2s ease;
+}
+
+textarea::placeholder{
+    color:rgba(255,255,255,.32);
+}
+
+textarea:focus{
+    border-color:rgba(255,43,131,.70);
+
+    box-shadow:
+        inset 0 0 20px rgba(0,0,0,.7),
+        0 0 12px rgba(255,43,131,.15);
 }
 
 #sectionFormWd textarea{
@@ -839,10 +923,6 @@ textarea{
     height:250px;
 }
 
-#sectionFormWd #sectionFormWd{
-    height:auto;
-}
-
 #historyRawInput{
     height:380px;
 }
@@ -850,18 +930,6 @@ textarea{
 #data1,
 #data2{
     height:380px;
-}
-
-textarea::placeholder{
-    color:rgba(255,255,255,.25);
-}
-
-textarea:focus{
-    border-color:rgba(50,246,255,.6);
-
-    box-shadow:
-        inset 0 0 20px rgba(0,0,0,.7),
-        0 0 12px rgba(50,246,255,.10);
 }
 
 
@@ -875,11 +943,13 @@ textarea:focus{
 
     background:#08090f;
 
-    border:1px solid rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.12);
 
     border-radius:10px;
 
     padding:16px;
+
+    color:#f4f4f4;
 
     font-family:monospace;
 
@@ -898,7 +968,7 @@ textarea:focus{
 }
 
 .no-data{
-    color:rgba(255,255,255,.30);
+    color:rgba(255,255,255,.38);
 
     font-style:italic;
 
@@ -912,6 +982,7 @@ textarea:focus{
 
 .action-stack{
     display:flex;
+
     flex-direction:column;
 
     gap:10px;
@@ -921,9 +992,11 @@ textarea:focus{
 
 .btn-cyber{
     position:relative;
+
     overflow:hidden;
 
     width:100%;
+
     min-height:48px;
 
     padding:14px;
@@ -933,9 +1006,11 @@ textarea:focus{
     font-family:var(--font-header);
 
     font-size:.82rem;
+
     font-weight:700;
 
     text-transform:uppercase;
+
     letter-spacing:1.5px;
 
     cursor:pointer;
@@ -951,9 +1026,11 @@ textarea:focus{
     position:absolute;
 
     top:0;
+
     left:-100%;
 
     width:55%;
+
     height:100%;
 
     background:linear-gradient(
@@ -985,48 +1062,53 @@ textarea:focus{
 }
 
 .btn-sec{
-    background:transparent;
+    background:rgba(45,4,20,.55);
 
-    border:1px solid var(--neon-gold);
+    border:1px solid #ff3f8d;
 
-    color:var(--neon-gold);
+    color:#ff9fc4;
 }
 
 .btn-sec:hover{
-    background:rgba(255,215,0,.08);
+    background:rgba(255,43,131,.10);
 
     box-shadow:
-        0 0 12px rgba(255,215,0,.20);
+        0 0 15px rgba(255,43,131,.25);
 }
 
 .btn-refresh{
-    background:transparent;
+    background:rgba(55,5,20,.45);
 
-    border:1px solid var(--cyber-amber);
+    border:1px solid #ff477f;
 
-    color:var(--cyber-amber);
+    color:#ff91b8;
 }
 
 .btn-refresh:hover{
-    background:rgba(255,85,0,.08);
+    background:rgba(255,43,131,.10);
 
     box-shadow:
-        0 0 12px rgba(255,85,0,.20);
+        0 0 15px rgba(255,43,131,.25);
 }
 
 .btn-core{
     background:linear-gradient(
         135deg,
-        #ff0b62,
-        #ff6a00
+        #a5003d,
+        #ff176b
     );
 
     color:#fff;
 
-    border:1px solid rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.12);
 
     box-shadow:
-        0 5px 15px rgba(255,23,107,.15);
+        0 5px 15px rgba(255,23,107,.20);
+}
+
+.btn-core:hover{
+    box-shadow:
+        0 8px 25px rgba(255,23,107,.35);
 }
 
 .btn-success-cyber{
@@ -1046,8 +1128,8 @@ textarea:focus{
 .btn-danger-cyber{
     background:linear-gradient(
         135deg,
-        #ff0b62,
-        #ff6a00
+        #a5003d,
+        #ff176b
     );
 
     color:#fff;
@@ -1092,7 +1174,7 @@ textarea:focus{
 
     border-radius:10px;
 
-    border:1px solid rgba(255,255,255,.06);
+    border:1px solid rgba(255,43,131,.18);
 
     box-shadow:
         inset 0 0 20px rgba(0,0,0,.40);
@@ -1112,6 +1194,7 @@ table{
 
 th{
     position:sticky;
+
     top:0;
 
     z-index:5;
@@ -1120,18 +1203,19 @@ th{
 
     text-align:left;
 
-    color:var(--neon-gold);
+    color:#ffb6d1;
 
     font-family:var(--font-header);
 
     font-size:.76rem;
+
     font-weight:700;
 
     text-transform:uppercase;
 
-    background:#110810;
+    background:#190711;
 
-    border-bottom:1px solid rgba(255,23,107,.45);
+    border-bottom:1px solid rgba(255,43,131,.50);
 
     letter-spacing:1px;
 }
@@ -1141,13 +1225,13 @@ td{
 
     color:#ffe8ec;
 
-    border-bottom:1px solid rgba(255,255,255,.035);
+    border-bottom:1px solid rgba(255,255,255,.045);
 
     font-weight:500;
 }
 
 tbody tr:hover td{
-    background:rgba(255,23,107,.06);
+    background:rgba(255,43,131,.07);
 }
 
 .td-number{
@@ -1157,7 +1241,7 @@ tbody tr:hover td{
 
     font-weight:bold;
 
-    color:var(--neon-gold);
+    color:#ffb4d1;
 }
 
 .td-user{
@@ -1167,7 +1251,7 @@ tbody tr:hover td{
 }
 
 .td-bank{
-    color:#ffcccc;
+    color:#ffd0df;
 }
 
 .td-amount{
@@ -1200,15 +1284,15 @@ tbody tr:hover td{
 
     border-radius:8px;
 
-    color:var(--success-cyan);
+    color:#ff9fc4;
 
     font-family:var(--font-header);
 
     font-size:.85rem;
 
-    background:rgba(0,243,255,.06);
+    background:rgba(255,43,131,.06);
 
-    border:1px solid rgba(0,243,255,.45);
+    border:1px solid rgba(255,43,131,.40);
 }
 
 
@@ -1221,16 +1305,17 @@ tbody tr:hover td{
 
     padding:8px;
 
-    color:var(--neon-gold);
+    color:#ffb3d0;
 
     font-family:var(--font-header);
 
     font-size:.78rem;
+
     font-weight:bold;
 
-    background:rgba(255,23,107,.08);
+    background:rgba(255,43,131,.08);
 
-    border-left:3px solid var(--cyber-red);
+    border-left:3px solid var(--pink);
 
     border-radius:3px;
 }
@@ -1240,11 +1325,11 @@ tbody tr:hover td{
 
     padding:6px 12px;
 
-    color:#ff6b6b;
+    color:#ff8585;
 
     background:rgba(255,77,77,.05);
 
-    border-left:3px solid var(--cyber-red);
+    border-left:3px solid var(--red);
 
     border-radius:3px;
 
@@ -1276,6 +1361,7 @@ tbody tr:hover td{
     position:fixed;
 
     right:15px;
+
     bottom:12px;
 
     z-index:9999;
@@ -1287,6 +1373,7 @@ tbody tr:hover td{
     display:block;
 
     width:105px;
+
     height:auto;
 
     filter:
@@ -1344,13 +1431,19 @@ tbody tr:hover td{
     body{
         padding:0 10px 25px;
 
-        background:
-            linear-gradient(
-                135deg,
-                rgba(3,5,12,.25),
-                rgba(7,10,22,.18)
-            ),
-            url("bg_rabbit_959x595.png") center center / cover no-repeat fixed;
+        /*
+           Tetap memakai gambar asli.
+           Tidak ada gradient / tint.
+        */
+        background-image:url("dor.png");
+
+        background-position:center center;
+
+        background-size:cover;
+
+        background-repeat:no-repeat;
+
+        background-attachment:fixed;
     }
 
     .brand-header{
@@ -1414,6 +1507,7 @@ tbody tr:hover td{
 
     .corner-gif-container{
         right:7px;
+
         bottom:7px;
     }
 
@@ -1425,7 +1519,7 @@ tbody tr:hover td{
 
 
 /* =========================================================
-   PERFORMANCE MODE
+   PERFORMANCE
    ========================================================= */
 
 @media(prefers-reduced-motion:reduce){
@@ -1434,7 +1528,9 @@ tbody tr:hover td{
     *::before,
     *::after{
         animation:none!important;
+
         transition:none!important;
+
         scroll-behavior:auto!important;
     }
 
@@ -1452,7 +1548,7 @@ tbody tr:hover td{
 
 
 <!-- =========================================================
-     ❄️ SNOW FALL
+     SNOW
      ========================================================= -->
 
 <div class="snow-container" aria-hidden="true">
@@ -1552,10 +1648,7 @@ tbody tr:hover td{
 
     <div class="right-hub">
 
-        <div
-            id="liveClock"
-            class="live-clock"
-        >
+        <div id="liveClock" class="live-clock">
             MEMUAT WAKTU...
         </div>
 
@@ -1629,7 +1722,7 @@ tbody tr:hover td{
 
             <div
                 class="panel-title"
-                style="color:var(--success-cyan);"
+                style="color:#ff9fc7;"
             >
                 📊 PREVIEW DATA SALINAN
             </div>
@@ -1755,7 +1848,7 @@ tbody tr:hover td{
 
         <div
             class="panel-title"
-            style="color:var(--neon-gold);"
+            style="color:#ffb4d1;"
         >
             🔍 HASIL ANALISIS
         </div>
@@ -1936,7 +2029,6 @@ tbody tr:hover td{
 
 <script>
 
-
 /* =========================================================
    ELEMENT CACHE
    ========================================================= */
@@ -2000,12 +2092,11 @@ const el = {
 
 function switchNav(target){
 
-    el.formWd.style.display = "none";
+    el.formWd.style.display="none";
 
-    el.duplicateWd.style.display = "none";
+    el.duplicateWd.style.display="none";
 
-    el.historyWd.style.display = "none";
-
+    el.historyWd.style.display="none";
 
     el.menuForm.classList.remove("active");
 
@@ -2014,25 +2105,25 @@ function switchNav(target){
     el.menuHistory.classList.remove("active");
 
 
-    if(target === "form-wd"){
+    if(target==="form-wd"){
 
-        el.formWd.style.display = "grid";
+        el.formWd.style.display="grid";
 
         el.menuForm.classList.add("active");
 
     }
 
-    else if(target === "duplicate-wd"){
+    else if(target==="duplicate-wd"){
 
-        el.duplicateWd.style.display = "grid";
+        el.duplicateWd.style.display="grid";
 
         el.menuDuplicate.classList.add("active");
 
     }
 
-    else if(target === "wd-history"){
+    else if(target==="wd-history"){
 
-        el.historyWd.style.display = "grid";
+        el.historyWd.style.display="grid";
 
         el.menuHistory.classList.add("active");
 
@@ -2045,8 +2136,7 @@ function switchNav(target){
    CLOCK
    ========================================================= */
 
-const hari = [
-
+const hari=[
     "Minggu",
     "Senin",
     "Selasa",
@@ -2054,11 +2144,9 @@ const hari = [
     "Kamis",
     "Jumat",
     "Sabtu"
-
 ];
 
-const bulan = [
-
+const bulan=[
     "Januari",
     "Februari",
     "Maret",
@@ -2071,34 +2159,30 @@ const bulan = [
     "Oktober",
     "November",
     "Desember"
-
 ];
 
 
 function updateClock(){
 
-    const now = new Date();
+    const now=new Date();
 
-
-    const jam =
+    const jam=
         String(now.getHours()).padStart(2,"0");
 
-    const menit =
+    const menit=
         String(now.getMinutes()).padStart(2,"0");
 
-    const detik =
+    const detik=
         String(now.getSeconds()).padStart(2,"0");
 
-
-    el.clock.textContent =
-        `${hari[now.getDay()]} , ` +
-        `${String(now.getDate()).padStart(2,"0")} ` +
-        `${bulan[now.getMonth()]} ` +
-        `${now.getFullYear()} | ` +
+    el.clock.textContent=
+        `${hari[now.getDay()]} , `+
+        `${String(now.getDate()).padStart(2,"0")} `+
+        `${bulan[now.getMonth()]} `+
+        `${now.getFullYear()} | `+
         `${jam}:${menit}:${detik}`;
 
 }
-
 
 updateClock();
 
@@ -2111,14 +2195,12 @@ setInterval(updateClock,1000);
 
 function refreshSystem(){
 
-    el.rawInput.value = "";
+    el.rawInput.value="";
 
-
-    el.textOutput.textContent =
+    el.textOutput.textContent=
         "Menunggu ekstraksi data transaksi...";
 
-
-    el.tableBody.innerHTML = `
+    el.tableBody.innerHTML=`
 
         <tr>
 
@@ -2137,9 +2219,7 @@ function refreshSystem(){
 
     `;
 
-
-    el.notification.style.display =
-        "none";
+    el.notification.style.display="none";
 
 }
 
@@ -2150,9 +2230,7 @@ function refreshSystem(){
 
 function prosesRekap(){
 
-    const input =
-        el.rawInput.value;
-
+    const input=el.rawInput.value;
 
     if(!input.trim()){
 
@@ -2162,22 +2240,16 @@ function prosesRekap(){
 
     }
 
-
-    const lines =
+    const lines=
         input
-            .split(/\r?\n/)
-            .map(l => l.trim())
-            .filter(Boolean);
+        .split(/\r?\n/)
+        .map(l=>l.trim())
+        .filter(Boolean);
+
+    const rekapData=[];
 
 
-    const rekapData = [];
-
-
-    for(
-        let i = 0;
-        i < lines.length;
-        i++
-    ){
+    for(let i=0;i<lines.length;i++){
 
         if(!lines[i].includes("Withdraw")){
 
@@ -2185,36 +2257,32 @@ function prosesRekap(){
 
         }
 
+        const prevLine=lines[i-1]||"";
 
-        const prevLine =
-            lines[i - 1] || "";
-
-
-        let userId =
+        let userId=
             prevLine
-                .replace(
-                    /NoUserDateAmountBalanceBank Asal\d+/gi,
-                    ""
-                )
-                .trim()
-                .replace(/^\d+/,"")
-                .trim();
+            .replace(
+                /NoUserDateAmountBalanceBank Asal\d+/gi,
+                ""
+            )
+            .trim()
+            .replace(/^\d+/,"")
+            .trim();
 
 
-        const cleanWithdraw =
+        const cleanWithdraw=
             lines[i]
-                .replace(
-                    /Withdraw\s*\d{4}-\d{2}-\d{2}\s*\d{2}:\d{2}:\d{2}/gi,
-                    ""
-                )
-                .trim();
+            .replace(
+                /Withdraw\s*\d{4}-\d{2}-\d{2}\s*\d{2}:\d{2}:\d{2}/gi,
+                ""
+            )
+            .trim();
 
 
-        const amountMatch =
+        const amountMatch=
             cleanWithdraw.match(/^([\d,.]+)/);
 
-
-        let amount =
+        let amount=
             amountMatch
             ? amountMatch[1].trim()
             : "0";
@@ -2222,62 +2290,56 @@ function prosesRekap(){
 
         if(amount.includes(" ")){
 
-            amount =
+            amount=
                 amount
-                    .split(" ")[0]
-                    .trim();
+                .split(" ")[0]
+                .trim();
 
         }
 
 
-        let bankDetail = "";
+        let bankDetail="";
 
 
         if(
-            lines[i + 1] &&
-            !lines[i + 1].startsWith("Withdraw") &&
+            lines[i+1] &&
+            !lines[i+1].startsWith("Withdraw") &&
             isNaN(
-                lines[i + 1]
-                    .trim()
-                    .charAt(0)
+                lines[i+1]
+                .trim()
+                .charAt(0)
             )
         ){
 
             if(
-                !lines[i + 1]
-                    .trim()
-                    .match(/^G\d+$/i)
+                !lines[i+1]
+                .trim()
+                .match(/^G\d+$/i)
             ){
 
-                bankDetail =
-                    lines[i + 1].trim();
+                bankDetail=
+                    lines[i+1].trim();
 
             }
 
         }
 
 
-        if(
-            !bankDetail &&
-            lines[i + 2]
-        ){
+        if(!bankDetail && lines[i+2]){
 
-            bankDetail =
-                lines[i + 2].trim();
+            bankDetail=
+                lines[i+2].trim();
 
         }
 
 
-        bankDetail =
+        bankDetail=
             bankDetail
-                .replace(/^\d+/,"")
-                .trim();
+            .replace(/^\d+/,"")
+            .trim();
 
 
-        if(
-            userId &&
-            bankDetail
-        ){
+        if(userId && bankDetail){
 
             rekapData.push({
 
@@ -2294,29 +2356,25 @@ function prosesRekap(){
     }
 
 
-    if(
-        rekapData.length === 0
-    ){
+    if(rekapData.length===0){
 
         return;
 
     }
 
 
-    let formatTeks = "";
+    let formatTeks="";
 
-    let tableHtml = "";
+    let tableHtml="";
 
 
-    for(
-        const item of rekapData
-    ){
+    for(const item of rekapData){
 
-        formatTeks +=
+        formatTeks+=
             `${item.user}\t${item.bank}\t\t${item.nominal}\n`;
 
 
-        tableHtml += `
+        tableHtml+=`
 
             <tr>
 
@@ -2343,16 +2401,11 @@ function prosesRekap(){
     }
 
 
-    el.textOutput.textContent =
-        formatTeks;
+    el.textOutput.textContent=formatTeks;
 
+    el.tableBody.innerHTML=tableHtml;
 
-    el.tableBody.innerHTML =
-        tableHtml;
-
-
-    el.notification.style.display =
-        "flex";
+    el.notification.style.display="flex";
 
 }
 
@@ -2361,8 +2414,7 @@ function prosesRekap(){
    DEBOUNCE FORM WD
    ========================================================= */
 
-let rekapTimer = null;
-
+let rekapTimer=null;
 
 el.rawInput.addEventListener(
     "input",
@@ -2370,14 +2422,9 @@ el.rawInput.addEventListener(
 
         clearTimeout(rekapTimer);
 
-
-        rekapTimer =
+        rekapTimer=
             setTimeout(
-                () => {
-
-                    prosesRekap();
-
-                },
+                ()=>prosesRekap(),
                 120
             );
 
@@ -2391,9 +2438,8 @@ el.rawInput.addEventListener(
 
 function copyFormatTeks(){
 
-    const textOutput =
+    const textOutput=
         el.textOutput.textContent;
-
 
     if(
         !textOutput ||
@@ -2404,16 +2450,15 @@ function copyFormatTeks(){
 
     }
 
-
     navigator.clipboard
-        .writeText(textOutput)
-        .then(() => {
+    .writeText(textOutput)
+    .then(()=>{
 
-            alert(
-                "Struktur Sheet berhasil disalin!"
-            );
+        alert(
+            "Struktur Sheet berhasil disalin!"
+        );
 
-        });
+    });
 
 }
 
@@ -2424,9 +2469,7 @@ function copyFormatTeks(){
 
 function hitungDaftarID(teksMentah){
 
-    const petaID =
-        new Map();
-
+    const petaID=new Map();
 
     if(!teksMentah.trim()){
 
@@ -2434,28 +2477,24 @@ function hitungDaftarID(teksMentah){
 
     }
 
-
-    const regexJam =
+    const regexJam=
         /\b\d{1,2}:\d{2}:\d{2}/g;
 
-
-    const posisiJam = [];
-
+    const posisiJam=[];
 
     let match;
 
 
     while(
-        (match = regexJam.exec(teksMentah)) !== null
+        (match=regexJam.exec(teksMentah))!==null
     ){
 
         posisiJam.push({
 
-            indexMulai:
-                match.index,
+            indexMulai:match.index,
 
             indexTeks:
-                match.index +
+                match.index+
                 match[0].length
 
         });
@@ -2463,41 +2502,37 @@ function hitungDaftarID(teksMentah){
     }
 
 
-    if(posisiJam.length === 0){
+    if(posisiJam.length===0){
 
-        const kataKata =
+        const kataKata=
             teksMentah.split(/[\s,]+/);
 
 
-        for(
-            const k of kataKata
-        ){
+        for(const k of kataKata){
 
-            let idClean =
+            let idClean=
                 k.split(
                     /(DANA|GOPAY|BCA|OVO|SEABANK|BANKJAGO|BANK|JAGO|TERIMA)/i
                 )[0];
 
 
-            idClean =
+            idClean=
                 idClean
-                    .replace(/[^a-zA-Z0-9]/g,"")
-                    .trim();
+                .replace(/[^a-zA-Z0-9]/g,"")
+                .trim();
 
 
             if(
-                idClean.length >= 3 &&
+                idClean.length>=3 &&
                 isNaN(idClean) &&
-                idClean.toUpperCase() !== "TERIMA"
+                idClean.toUpperCase()!=="TERIMA"
             ){
 
-                const idLower =
+                const idLower=
                     idClean.toLowerCase();
 
 
-                if(
-                    petaID.has(idLower)
-                ){
+                if(petaID.has(idLower)){
 
                     petaID.get(idLower).count++;
 
@@ -2526,73 +2561,65 @@ function hitungDaftarID(teksMentah){
 
 
     for(
-        let i = 0;
-        i < posisiJam.length;
+        let i=0;
+        i<posisiJam.length;
         i++
     ){
 
-        const mulai =
+        const mulai=
             posisiJam[i].indexTeks;
 
 
-        const selesai =
-            posisiJam[i + 1]
-            ? posisiJam[i + 1].indexMulai
+        const selesai=
+            posisiJam[i+1]
+            ? posisiJam[i+1].indexMulai
             : teksMentah.length;
 
 
-        const blokTeks =
+        const blokTeks=
             teksMentah
-                .substring(
-                    mulai,
-                    selesai
-                )
-                .trim();
+            .substring(mulai,selesai)
+            .trim();
 
 
-        const kataPertama =
+        const kataPertama=
             blokTeks.split(/[\s,]+/)[0];
 
 
-        let idClean =
+        let idClean=
             kataPertama.split(
                 /(DANA|GOPAY|BCA|OVO|SEABANK|BANKJAGO|BANK|JAGO|TERIMA)/i
             )[0];
 
 
-        const cekKapital =
-            idClean.match(
-                /([a-z0-9]+)([A-Z])/
-            );
+        const cekKapital=
+            idClean.match(/([a-z0-9]+)([A-Z])/);
 
 
         if(cekKapital){
 
-            idClean =
-                cekKapital[1];
+            idClean=cekKapital[1];
 
         }
 
 
-        idClean =
+        idClean=
             idClean
-                .replace(/[^a-zA-Z0-9]/g,"")
-                .trim();
+            .replace(/[^a-zA-Z0-9]/g,"")
+            .trim();
 
 
         if(
-            idClean.length >= 3 &&
+            idClean.length>=3 &&
             isNaN(idClean) &&
-            idClean.toUpperCase() !== "TERIMA"
+            idClean.toUpperCase()!=="TERIMA"
         ){
 
-            const idLower =
+            const idLower=
                 idClean.toLowerCase();
 
 
-            if(
-                petaID.has(idLower)
-            ){
+            if(petaID.has(idLower)){
 
                 petaID.get(idLower).count++;
 
@@ -2626,12 +2653,9 @@ function hitungDaftarID(teksMentah){
 
 function prosesDataAkurat(){
 
-    const txtData1 =
-        el.data1.value;
+    const txtData1=el.data1.value;
 
-
-    const txtData2 =
-        el.data2.value;
+    const txtData2=el.data2.value;
 
 
     if(
@@ -2639,7 +2663,7 @@ function prosesDataAkurat(){
         !txtData2.trim()
     ){
 
-        el.hasil.innerHTML =
+        el.hasil.innerHTML=
             "<span class='no-data'>" +
             "Silakan isi Kolom 1 dan Kolom 2 terlebih dahulu." +
             "</span>";
@@ -2649,71 +2673,63 @@ function prosesDataAkurat(){
     }
 
 
-    el.hasil.innerHTML =
-        "<em style='color:var(--neon-gold);'>" +
+    el.hasil.innerHTML=
+        "<em style='color:#ff9fc4;'>" +
         "Sedang menyaring data secara presisi..." +
         "</em>";
 
 
-    setTimeout(() => {
+    setTimeout(()=>{
 
-        const mapKolom1 =
+        const mapKolom1=
             hitungDaftarID(txtData1);
 
-
-        const mapKolom2 =
+        const mapKolom2=
             hitungDaftarID(txtData2);
 
+        const listEror=[];
 
-        const listEror = [];
 
-
-        const semuaIDUnik =
+        const semuaIDUnik=
             new Set([
-
                 ...mapKolom1.keys(),
-
                 ...mapKolom2.keys()
-
             ]);
 
 
         semuaIDUnik.forEach(
-            idLower => {
+            idLower=>{
 
-                const data1 =
+                const data1=
                     mapKolom1.get(idLower);
 
-
-                const data2 =
+                const data2=
                     mapKolom2.get(idLower);
 
 
-                const count1 =
+                const count1=
                     data1
                     ? data1.count
                     : 0;
 
 
-                const count2 =
+                const count2=
                     data2
                     ? data2.count
                     : 0;
 
 
-                const namaID =
+                const namaID=
                     data1
                     ? data1.originalCase
                     : data2.originalCase;
 
 
-                if(
-                    count1 !== count2
-                ){
+                if(count1!==count2){
 
                     if(
-                        count1 > 0 &&
-                        count2 === 0
+                        count1>0 &&
+                        count2===0
                     ){
 
                         listEror.push({
@@ -2728,8 +2744,8 @@ function prosesDataAkurat(){
                     }
 
                     else if(
-                        count2 > 0 &&
-                        count1 === 0
+                        count2>0 &&
+                        count1===0
                     ){
 
                         listEror.push({
@@ -2762,11 +2778,9 @@ function prosesDataAkurat(){
         );
 
 
-        if(
-            listEror.length === 0
-        ){
+        if(listEror.length===0){
 
-            el.hasil.innerHTML =
+            el.hasil.innerHTML=
                 "<span class='success-msg'>" +
                 "✅ Sempurna! Kedua data memiliki daftar User ID " +
                 "dan JUMLAH kuantitas yang sama utuh." +
@@ -2777,17 +2791,15 @@ function prosesDataAkurat(){
         }
 
 
-        let htmlHasil =
+        let htmlHasil=
             `<div class="section-title">
                 ⚠️ Ditemukan ${listEror.length} Masalah Ketidakcocokan:
             </div>`;
 
 
-        for(
-            const err of listEror
-        ){
+        for(const err of listEror){
 
-            htmlHasil +=
+            htmlHasil+=
                 `<div class="missing-item">
                     ❌ <strong>${err.id}</strong>
                     -> ${err.tipe}
@@ -2796,9 +2808,7 @@ function prosesDataAkurat(){
         }
 
 
-        el.hasil.innerHTML =
-            htmlHasil;
-
+        el.hasil.innerHTML=htmlHasil;
 
     },50);
 
@@ -2811,16 +2821,13 @@ function prosesDataAkurat(){
 
 function resetDuplicateMenu(){
 
-    el.data1.value = "";
+    el.data1.value="";
 
-    el.data2.value = "";
+    el.data2.value="";
 
+    el.hasil.className="no-data";
 
-    el.hasil.className =
-        "no-data";
-
-
-    el.hasil.textContent =
+    el.hasil.textContent=
         "Klik tombol analisa di bawah untuk menyaring data...";
 
 }
@@ -2832,13 +2839,13 @@ function resetDuplicateMenu(){
 
 function parseData(){
 
-    const rawText =
+    const rawText=
         el.historyInput.value.trim();
 
 
     if(!rawText){
 
-        el.historyBody.innerHTML = `
+        el.historyBody.innerHTML=`
 
             <tr>
 
@@ -2862,16 +2869,13 @@ function parseData(){
     }
 
 
-    const lines =
+    const lines=
         rawText.split(/\r?\n/);
 
+    const parsedRows=[];
 
-    const parsedRows = [];
 
-
-    for(
-        const line of lines
-    ){
+    for(const line of lines){
 
         if(!line.trim()){
 
@@ -2880,17 +2884,16 @@ function parseData(){
         }
 
 
-        const withdrawIdx =
+        const withdrawIdx=
             line.indexOf("Withdraw");
 
-
-        const acceptIdx =
+        const acceptIdx=
             line.indexOf("ACCEPT");
 
 
         if(
-            withdrawIdx === -1 ||
-            acceptIdx === -1
+            withdrawIdx===-1 ||
+            acceptIdx===-1
         ){
 
             continue;
@@ -2898,83 +2901,78 @@ function parseData(){
         }
 
 
-        const prefix =
+        const prefix=
             line.substring(
                 0,
                 withdrawIdx
             );
 
 
-        const timeMatch =
+        const timeMatch=
             prefix.match(
                 /\d{2}:\d{2}:\d{2}/
             );
 
 
-        const time =
+        const time=
             timeMatch
             ? timeMatch[0]
             : "";
 
 
-        let cleanPrefix =
+        let cleanPrefix=
             prefix.replace(
                 /^\d+/,
                 ""
             );
 
 
-        cleanPrefix =
+        cleanPrefix=
             cleanPrefix.replace(
                 /\d{4}-\d{2}-\d{2}\s*\d{2}:\d{2}:\d{2}/,
                 ""
             );
 
 
-        cleanPrefix =
+        cleanPrefix=
             cleanPrefix.replace(
                 /\d{4}-\d{2}-\d{2}/,
                 ""
             );
 
 
-        cleanPrefix =
+        cleanPrefix=
             cleanPrefix.replace(
                 /\d{2}:\d{2}:\d{2}/,
                 ""
             );
 
 
-        const user =
+        const user=
             cleanPrefix.trim();
 
 
-        const middle =
+        const middle=
             line.substring(
-                withdrawIdx + 8,
+                withdrawIdx+8,
                 acceptIdx
             );
 
 
-        const lastDashIdx =
+        const lastDashIdx=
             middle.lastIndexOf("-");
 
 
-        const bankInfo =
+        const bankInfo=
             middle
-                .substring(
-                    0,
-                    lastDashIdx
-                )
-                .trim();
+            .substring(0,lastDashIdx)
+            .trim();
 
 
-        const amount =
+        const amount=
             middle
-                .substring(
-                    lastDashIdx + 1
-                )
-                .trim();
+            .substring(lastDashIdx+1)
+            .trim();
 
 
         parsedRows.push({
@@ -2995,11 +2993,9 @@ function parseData(){
     parsedRows.reverse();
 
 
-    if(
-        parsedRows.length === 0
-    ){
+    if(parsedRows.length===0){
 
-        el.historyBody.innerHTML = `
+        el.historyBody.innerHTML=`
 
             <tr>
 
@@ -3023,18 +3019,18 @@ function parseData(){
     }
 
 
-    let html = "";
+    let html="";
 
 
     parsedRows.forEach(
-        (item,index) => {
+        (item,index)=>{
 
-            html += `
+            html+=`
 
                 <tr>
 
                     <td class="td-number">
-                        ${index + 1}
+                        ${index+1}
                     </td>
 
                     <td>
@@ -3063,8 +3059,7 @@ function parseData(){
     );
 
 
-    el.historyBody.innerHTML =
-        html;
+    el.historyBody.innerHTML=html;
 
 }
 
@@ -3073,8 +3068,7 @@ function parseData(){
    DEBOUNCE HISTORY
    ========================================================= */
 
-let historyTimer = null;
-
+let historyTimer=null;
 
 el.historyInput.addEventListener(
     "input",
@@ -3082,14 +3076,9 @@ el.historyInput.addEventListener(
 
         clearTimeout(historyTimer);
 
-
-        historyTimer =
+        historyTimer=
             setTimeout(
-                () => {
-
-                    parseData();
-
-                },
+                ()=>parseData(),
                 150
             );
 
@@ -3103,10 +3092,9 @@ el.historyInput.addEventListener(
 
 function resetHistoryData(){
 
-    el.historyInput.value = "";
+    el.historyInput.value="";
 
-
-    el.historyBody.innerHTML = `
+    el.historyBody.innerHTML=`
 
         <tr>
 
@@ -3134,47 +3122,43 @@ function resetHistoryData(){
 
 function copyTableData(){
 
-    const tbody =
+    const tbody=
         el.historyBody;
 
 
-    if(
-        tbody.rows.length === 0
-    ){
+    if(tbody.rows.length===0){
 
         return;
 
     }
 
 
-    let textToCopy = "";
+    let textToCopy="";
 
 
     for(
-        let i = 0;
-        i < tbody.rows.length;
+        let i=0;
+        i<tbody.rows.length;
         i++
     ){
 
-        const row =
+        const row=
             tbody.rows[i];
 
 
-        if(
-            row.cells.length <= 1
-        ){
+        if(row.cells.length<=1){
 
             continue;
 
         }
 
 
-        const rowData = [];
+        const rowData=[];
 
 
         for(
-            let j = 1;
-            j < row.cells.length;
+            let j=1;
+            j<row.cells.length;
             j++
         ){
 
@@ -3185,16 +3169,14 @@ function copyTableData(){
         }
 
 
-        textToCopy +=
-            rowData.join("\t") +
+        textToCopy+=
+            rowData.join("\t")+
             "\n";
 
     }
 
 
-    if(
-        !textToCopy.trim()
-    ){
+    if(!textToCopy.trim()){
 
         return;
 
@@ -3202,23 +3184,23 @@ function copyTableData(){
 
 
     navigator.clipboard
-        .writeText(textToCopy)
-        .then(() => {
+    .writeText(textToCopy)
+    .then(()=>{
 
-            alert(
-                "Hasil data berhasil disalin! " +
-                "Anda bisa langsung tempel (paste) ke Excel."
-            );
+        alert(
+            "Hasil data berhasil disalin! " +
+            "Anda bisa langsung tempel (paste) ke Excel."
+        );
 
-        })
-        .catch(err => {
+    })
+    .catch(err=>{
 
-            console.error(
-                "Gagal menyalin data:",
-                err
-            );
+        console.error(
+            "Gagal menyalin data:",
+            err
+        );
 
-        });
+    });
 
 }
 
@@ -3227,28 +3209,64 @@ function copyTableData(){
    COMPATIBILITY
    ========================================================= */
 
-window.switchNav =
-    switchNav;
+window.switchNav=switchNav;
 
-window.refreshSystem =
-    refreshSystem;
+window.refreshSystem=refreshSystem;
 
-window.prosesRekap =
-    prosesRekap;
+window.prosesRekap=prosesRekap;
 
-window.copyFormatTeks =
-    copyFormatTeks;
+window.copyFormatTeks=copyFormatTeks;
 
-window.prosesDataAkurat =
-    prosesDataAkurat;
+window.prosesDataAkurat=prosesDataAkurat;
 
-window.resetDuplicateMenu =
-    resetDuplicateMenu;
+window.resetDuplicateMenu=resetDuplicateMenu;
 
-window.parseData =
-    parseData;
+window.parseData=parseData;
 
-window.resetHistoryData =
-    resetHistoryData;
+window.resetHistoryData=resetHistoryData;
 
-window.copyTableData = copyTableData; /* ========================================================= CTRL + U REDIRECT ========================================================= */ window.addEventListener("keydown", function(event) { if ( event.ctrlKey && event.key.toLowerCase() === "u" ) { event.preventDefault(); window.location.href = "haha.html"; } }); </script> <!-- ========================================================= GIF POJOK KANAN ========================================================= --> <div class="corner-gif-container"> <img src="reze-dance-gif-without-background.gif" alt="Reze Dance" class="corner-gif" > </div> </body> </html>
+window.copyTableData=copyTableData;
+
+
+/* =========================================================
+   CTRL + U REDIRECT
+   ========================================================= */
+
+window.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.ctrlKey &&
+            event.key.toLowerCase()==="u"
+        ){
+
+            event.preventDefault();
+
+            window.location.href="haha.html";
+
+        }
+
+    }
+);
+
+</script>
+
+
+<!-- =========================================================
+     GIF POJOK KANAN
+     ========================================================= -->
+
+<div class="corner-gif-container">
+
+    <img
+        src="reze-dance-gif-without-background.gif"
+        alt="Reze Dance"
+        class="corner-gif"
+    >
+
+</div>
+
+
+</body>
+</html>
